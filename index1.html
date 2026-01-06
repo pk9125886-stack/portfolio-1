@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pankaj Kumar | Interactive Portfolio</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<style>
+/* ================= THEME ================= */
+:root{
+  --bg:#060b1a;
+  --card:rgba(255,255,255,0.08);
+  --text:#e5e7eb;
+  --accent:#00e5ff;
+  --accent2:#7c4dff;
+}
+
+body.light{
+  --bg:#f4f6f8;
+  --card:#ffffff;
+  --text:#111;
+}
+
+/* ================= RESET ================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',system-ui,sans-serif;
+}
+
+body{
+  background:linear-gradient(120deg,var(--accent2),var(--bg),#000);
+  background-size:400% 400%;
+  animation:bgMove 15s ease infinite;
+  color:var(--text);
+  height:100vh;
+  overflow:hidden;
+}
+
+@keyframes bgMove{
+  50%{background-position:100% 50%;}
+}
+
+/* ================= NAVBAR ================= */
+nav{
+  height:70px;
+  padding:0 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(20px);
+  background:rgba(0,0,0,0.35);
+}
+
+.logo{
+  font-size:22px;
+  font-weight:700;
+}
+.logo span{color:var(--accent);}
+
+.menu{
+  display:flex;
+  gap:30px;
+}
+
+.menu a{
+  cursor:pointer;
+  text-decoration:none;
+  color:var(--text);
+  position:relative;
+}
+
+.menu a::after{
+  content:'';
+  position:absolute;
+  bottom:-6px;
+  left:0;
+  width:0;
+  height:2px;
+  background:var(--accent);
+  transition:0.4s;
+}
+
+.menu a.active::after,
+.menu a:hover::after{
+  width:100%;
+}
+
+.actions i{
+  margin-left:18px;
+  cursor:pointer;
+  transition:0.3s;
+}
+.actions i:hover{
+  color:var(--accent);
+  transform:scale(1.2);
+}
+
+/* ================= SECTIONS ================= */
+.section{
+  position:absolute;
+  inset:70px 0 0 0;
+  display:none;
+  padding:60px;
+}
+
+.section.active{
+  display:flex;
+}
+
+/* ================= HOME ================= */
+.hero{
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:3.8rem;
+  line-height:1.2;
+}
+
+.hero span{color:var(--accent);}
+
+.hero p{
+  max-width:700px;
+  margin:25px 0;
+  font-size:1.2rem;
+  opacity:0.9;
+}
+
+.cta{
+  display:flex;
+  gap:20px;
+}
+
+.cta button{
+  padding:14px 36px;
+  border-radius:30px;
+  border:none;
+  cursor:pointer;
+  font-size:1rem;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:white;
+  transition:0.4s;
+}
+
+.cta button:hover{
+  transform:translateY(-5px) scale(1.05);
+  box-shadow:0 20px 40px rgba(0,229,255,0.4);
+}
+
+/* ================= ABOUT ================= */
+.about{
+  justify-content:center;
+  align-items:center;
+}
+
+.about-card{
+  background:var(--card);
+  backdrop-filter:blur(25px);
+  padding:50px;
+  border-radius:25px;
+  max-width:800px;
+}
+
+.about-stats{
+  display:flex;
+  gap:20px;
+  margin-top:30px;
+}
+
+.stat{
+  flex:1;
+  background:rgba(255,255,255,0.1);
+  padding:20px;
+  border-radius:20px;
+  text-align:center;
+}
+
+/* ================= SKILLS ================= */
+.skills{
+  flex-direction:column;
+}
+
+.skill-group{
+  max-width:800px;
+  width:100%;
+  margin-bottom:30px;
+}
+
+.skill-bar{
+  background:rgba(255,255,255,0.1);
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:10px;
+}
+
+.skill-fill{
+  height:14px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  width:0;
+}
+
+/* ================= PROJECTS ================= */
+.projects{
+  justify-content:center;
+}
+
+.project-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+  max-width:1000px;
+}
+
+.project{
+  background:var(--card);
+  backdrop-filter:blur(25px);
+  border-radius:25px;
+  padding:30px;
+  cursor:pointer;
+  transition:0.4s;
+}
+
+.project:hover{
+  transform:translateY(-12px) scale(1.05);
+  box-shadow:0 30px 60px rgba(0,0,0,0.4);
+}
+
+/* ================= PROJECT MODAL ================= */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal.active{
+  display:flex;
+}
+
+.modal-content{
+  background:var(--bg);
+  padding:40px;
+  border-radius:25px;
+  max-width:600px;
+}
+
+/* ================= CONTACT ================= */
+.contact{
+  justify-content:center;
+}
+
+form{
+  background:var(--card);
+  padding:40px;
+  border-radius:25px;
+  width:400px;
+}
+input,textarea{
+  width:100%;
+  padding:14px;
+  margin:10px 0;
+  border-radius:10px;
+  border:none;
+}
+button.send{
+  width:100%;
+  padding:14px;
+  border-radius:25px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:white;
+  border:none;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">Pankaj<span>.</span></div>
+  <div class="menu">
+    <a class="active" onclick="show('home',this)">Home</a>
+    <a onclick="show('about',this)">About</a>
+    <a onclick="show('skills',this)">Skills</a>
+    <a onclick="show('projects',this)">Projects</a>
+    <a onclick="show('contact',this)">Contact</a>
+  </div>
+  <div class="actions">
+    <i class="fab fa-github"></i>
+    <i class="fab fa-linkedin"></i>
+    <i class="fas fa-moon" onclick="document.body.classList.toggle('light')"></i>
+  </div>
+</nav>
+
+<section id="home" class="section hero active">
+  <h1>Building <span>Interactive</span> & <span>Impactful</span> Web Experiences</h1>
+  <p>I’m a frontend developer focused on modern UI, animations, and product-grade interfaces.</p>
+  <div class="cta">
+    <button onclick="show('projects')">Explore Projects</button>
+    <button onclick="show('contact')">Let’s Talk</button>
+  </div>
+</section>
+
+<section id="about" class="section about">
+  <div class="about-card">
+    <h2>About Me</h2>
+    <p>I design and build engaging digital experiences using modern frontend technologies, animations, and strong UX principles.</p>
+    <div class="about-stats">
+      <div class="stat"><h3>10+</h3><p>Projects</p></div>
+      <div class="stat"><h3>2+</h3><p>Years Learning</p></div>
+      <div class="stat"><h3>100%</h3><p>Passion</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section skills">
+  <div class="skill-group">
+    <h3>Frontend</h3>
+    <div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div>
+  </div>
+  <div class="skill-group">
+    <h3>JavaScript</h3>
+    <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+  </div>
+  <div class="skill-group">
+    <h3>UI & Animation</h3>
+    <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
+  </div>
+</section>
+
+<section id="projects" class="section projects">
+  <div class="project-grid">
+    <div class="project" onclick="openModal('WasteSense AI','Predictive cleanliness intelligence platform.')">
+      <h3>WasteSense AI</h3>
+      <p>Smart city cleanliness intelligence.</p>
+    </div>
+    <div class="project" onclick="openModal('Portfolio Pro','Animated premium portfolio.')">
+      <h3>Portfolio Pro</h3>
+      <p>High-impact animated portfolio.</p>
+    </div>
+    <div class="project" onclick="openModal('Expense Tracker','Personal finance tracking app.')">
+      <h3>Expense Tracker</h3>
+      <p>Track expenses visually.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section contact">
+  <form>
+    <h2>Let’s Build Something</h2>
+    <input placeholder="Your Name">
+    <input placeholder="Email">
+    <textarea placeholder="Message"></textarea>
+    <button class="send">Send Message</button>
+  </form>
+</section>
+
+<div class="modal" id="modal" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+  </div>
+</div>
+
+<script>
+function show(id,el){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.menu a').forEach(a=>a.classList.remove('active'));
+  if(el) el.classList.add('active');
+
+  gsap.from(`#${id}`,{opacity:0,y:30,scale:0.95,duration:0.6});
+
+  if(id==='skills'){
+    document.querySelectorAll('.skill-fill').forEach(bar=>{
+      gsap.to(bar,{width:bar.dataset.width,duration:1});
+    });
+  }
+}
+
+function openModal(title,desc){
+  document.getElementById('modalTitle').innerText=title;
+  document.getElementById('modalDesc').innerText=desc;
+  document.getElementById('modal').classList.add('active');
+  gsap.from('.modal-content',{scale:0.8,opacity:0,duration:0.4});
+}
+
+function closeModal(){
+  document.getElementById('modal').classList.remove('active');
+}
+</script>
+
+</body>
+</html>
