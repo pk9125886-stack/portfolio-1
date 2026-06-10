@@ -47,7 +47,7 @@ export const personal = {
     {
       role: "Website Developer",
       company: "Freelance / Personal Projects",
-      period: "2024 — Present",
+      period: "2026 — Present",
       description:
         "Building responsive web applications with modern UI, animations, and performance optimization.",
     },
