@@ -19,7 +19,7 @@ export function SectionHeading({ title, subtitle, className }: SectionHeadingPro
       className={cn("mb-12 text-center", className)}
     >
       <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-        <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-cyan-600 via-violet-600 to-fuchsia-600 bg-clip-text text-transparent dark:from-cyan-400 dark:via-violet-400 dark:to-fuchsia-400">
           {title}
         </span>
       </h2>

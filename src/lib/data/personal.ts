@@ -2,15 +2,16 @@ export const personal = {
   name: "Pankaj Kumar",
   firstName: "Pankaj",
   lastName: "Kumar",
-  title: "Frontend Developer",
+  title: "Software Developer",
   tagline:
-    "Frontend Developer focused on modern UI, animations, and real-world web products.",
-  bio: "I am a passionate frontend developer who loves building interactive, visually appealing, and user-focused web applications.",
+    "Software Developer focused on modern UI, animations, and real-world web products.",
+  bio: "I am a passionate software developer who loves building interactive, visually appealing, and user-focused web applications.",
+  profileImage: "/profile.jpg",
   location: "India",
   email: "pankaj.kumar@example.com",
   resumeUrl: "/resume.pdf",
   typingRoles: [
-    "Frontend Developer",
+    "Software Developer",
     "UI/UX Enthusiast",
     "Student",
     "Tech Enthusiast",
@@ -32,7 +33,7 @@ export const personal = {
     { icon: "🎯", title: "Focus", text: "UI/UX, animations, performance, clean code" },
     { icon: "💡", title: "Mindset", text: "Learn fast, build real projects, improve daily" },
     { icon: "🛠", title: "Tools", text: "HTML, CSS, JavaScript, Git, Firebase" },
-    { icon: "🚀", title: "Goal", text: "Become a world-class frontend engineer" },
+    { icon: "🚀", title: "Goal", text: "Become a world-class software engineer" },
   ],
   education: [
     {
@@ -44,7 +45,7 @@ export const personal = {
   ],
   experience: [
     {
-      role: "Frontend Developer",
+      role: "Software Developer",
       company: "Freelance / Personal Projects",
       period: "2024 — Present",
       description:

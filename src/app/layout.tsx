@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   description: personal.tagline,
   keywords: [
     "Pankaj Kumar",
-    "Frontend Developer",
+    "Software Developer",
     "React",
     "Next.js",
     "Portfolio",
@@ -77,10 +77,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f6f8" },
-    { media: "(prefers-color-scheme: dark)", color: "#060b1a" },
-  ],
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
 };

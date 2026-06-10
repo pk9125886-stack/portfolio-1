@@ -35,7 +35,7 @@ export function AnimatedCounter({ value, suffix = "", label }: AnimatedCounterPr
       viewport={{ once: true }}
       className="text-center"
     >
-      <div className="text-4xl font-bold text-cyan-400 sm:text-5xl">
+      <div className="text-4xl font-bold text-cyan-600 sm:text-5xl dark:text-cyan-400">
         {count}
         {suffix}
       </div>

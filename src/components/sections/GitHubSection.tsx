@@ -72,7 +72,7 @@ export function GitHubSection() {
                   {langEntries.map(([lang, count]) => (
                     <span
                       key={lang}
-                      className="rounded-full bg-white/5 px-4 py-2 text-sm ring-1 ring-white/10"
+                      className="rounded-full bg-gray-50 px-4 py-2 text-sm ring-1 ring-gray-200 dark:bg-white/5 dark:ring-white/10"
                     >
                       {lang}{" "}
                       <span className="text-cyan-400">({count})</span>
@@ -82,7 +82,7 @@ export function GitHubSection() {
               </GlassCard>
             )}
 
-            <div className="mb-10 overflow-hidden rounded-2xl border border-white/10">
+            <div className="mb-10 overflow-hidden rounded-2xl border border-theme">
               <img
                 src="https://ghchart.rshah.org/pk9125886-stack"
                 alt="GitHub contribution graph"

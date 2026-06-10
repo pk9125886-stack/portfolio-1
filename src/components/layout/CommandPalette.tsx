@@ -51,7 +51,7 @@ export function CommandPalette() {
     <>
       <button
         onClick={toggle}
-        className="fixed bottom-6 right-6 z-50 hidden items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs text-muted-foreground backdrop-blur-xl transition hover:border-cyan-400/50 hover:text-cyan-400 sm:flex"
+        className="fixed bottom-6 right-6 z-50 hidden items-center gap-2 rounded-full border border-theme bg-white px-4 py-2 text-xs text-muted-foreground shadow-sm transition hover:border-cyan-400 hover:text-cyan-600 dark:bg-white/10 dark:hover:text-cyan-400 sm:flex"
       >
         <Command size={14} />
         <span>Ctrl+K</span>
@@ -63,7 +63,7 @@ export function CommandPalette() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[9998] flex items-start justify-center bg-black/60 p-4 pt-[20vh] backdrop-blur-sm"
+            className="fixed inset-0 z-[9998] flex items-start justify-center bg-black/40 p-4 pt-[20vh] backdrop-blur-sm dark:bg-black/60"
             onClick={() => setOpen(false)}
           >
             <motion.div
@@ -71,9 +71,9 @@ export function CommandPalette() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -20 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-lg overflow-hidden rounded-2xl border border-white/10 bg-[#0a1020] shadow-2xl"
+              className="w-full max-w-lg overflow-hidden rounded-2xl border border-theme bg-white shadow-2xl dark:bg-[#0a1020]"
             >
-              <div className="flex items-center gap-3 border-b border-white/10 px-4 py-3">
+              <div className="flex items-center gap-3 border-b border-theme px-4 py-3">
                 <Search size={18} className="text-muted-foreground" />
                 <input
                   autoFocus
@@ -82,7 +82,7 @@ export function CommandPalette() {
                   placeholder="Search commands..."
                   className="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
                 />
-                <kbd className="rounded border border-white/10 px-2 py-0.5 text-xs text-muted-foreground">
+                <kbd className="rounded border border-theme px-2 py-0.5 text-xs text-muted-foreground">
                   ESC
                 </kbd>
               </div>
@@ -91,7 +91,7 @@ export function CommandPalette() {
                   <li key={item.label}>
                     <button
                       onClick={() => handleSelect(item)}
-                      className="flex w-full items-center rounded-lg px-3 py-2.5 text-left text-sm transition hover:bg-white/5"
+                      className="flex w-full items-center rounded-lg px-3 py-2.5 text-left text-sm transition hover:bg-gray-100 dark:hover:bg-white/5"
                     >
                       {item.label}
                     </button>

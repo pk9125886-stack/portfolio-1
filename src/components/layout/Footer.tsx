@@ -8,7 +8,7 @@ export function Footer() {
   const visitors = useVisitorCount();
 
   return (
-    <footer className="border-t border-white/10 bg-white/5 py-8 backdrop-blur-sm">
+    <footer className="border-t border-theme bg-gray-50 py-8 dark:bg-white/5">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 sm:flex-row sm:px-6 lg:px-8">
         <p className="text-sm text-muted-foreground">
           © {new Date().getFullYear()} {personal.name}. All rights reserved.

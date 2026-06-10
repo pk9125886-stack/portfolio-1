@@ -40,7 +40,7 @@ export function Navbar() {
       className={cn(
         "fixed top-0 z-50 w-full transition-all duration-300",
         scrolled
-          ? "border-b border-white/10 bg-[#060b1a]/80 backdrop-blur-xl shadow-lg"
+          ? "border-b border-theme bg-[var(--nav-bg)] backdrop-blur-xl shadow-sm dark:shadow-lg"
           : "bg-transparent"
       )}
     >
@@ -75,7 +75,7 @@ export function Navbar() {
           {mounted && (
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="rounded-full p-2 text-foreground/70 transition hover:bg-white/10 hover:text-cyan-400"
+              className="rounded-full p-2 text-foreground/70 transition hover:bg-gray-100 hover:text-cyan-600 dark:hover:bg-white/10 dark:hover:text-cyan-400"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
@@ -97,7 +97,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="border-t border-white/10 bg-[#060b1a]/95 backdrop-blur-xl md:hidden"
+            className="border-t border-theme bg-[var(--nav-bg)] backdrop-blur-xl md:hidden"
           >
             <div className="flex flex-col gap-1 p-4">
               {navLinks.map((link) => (
@@ -105,7 +105,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="rounded-lg px-4 py-3 text-sm font-medium hover:bg-white/5"
+                  className="rounded-lg px-4 py-3 text-sm font-medium hover:bg-gray-100 dark:hover:bg-white/5"
                 >
                   {link.label}
                 </a>

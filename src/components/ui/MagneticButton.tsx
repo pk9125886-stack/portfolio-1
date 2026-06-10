@@ -18,7 +18,7 @@ const variants = {
   primary:
     "bg-gradient-to-r from-cyan-500 to-violet-600 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40",
   secondary:
-    "bg-white/10 text-foreground backdrop-blur-sm border border-white/20 hover:bg-white/15",
+    "bg-gray-100 text-foreground border border-theme hover:bg-gray-200 dark:bg-white/10 dark:border-white/20 dark:hover:bg-white/15",
   outline:
     "border border-cyan-400/50 text-cyan-400 hover:bg-cyan-400/10",
 };

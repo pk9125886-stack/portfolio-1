@@ -89,7 +89,7 @@ export function Hero() {
                 href={personal.social.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-white/10 p-3 text-muted-foreground transition hover:border-cyan-400/50 hover:text-cyan-400 hover:shadow-[0_0_20px_rgba(0,229,255,0.3)]"
+                className="rounded-full border border-theme p-3 text-muted-foreground transition hover:border-cyan-500 hover:text-cyan-600 hover:shadow-md dark:hover:border-cyan-400/50 dark:hover:text-cyan-400"
                 aria-label="GitHub"
               >
                 <GitHubIcon className="h-[22px] w-[22px]" />
@@ -98,7 +98,7 @@ export function Hero() {
                 href={personal.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-white/10 p-3 text-muted-foreground transition hover:border-cyan-400/50 hover:text-cyan-400 hover:shadow-[0_0_20px_rgba(0,229,255,0.3)]"
+                className="rounded-full border border-theme p-3 text-muted-foreground transition hover:border-cyan-500 hover:text-cyan-600 hover:shadow-md dark:hover:border-cyan-400/50 dark:hover:text-cyan-400"
                 aria-label="LinkedIn"
               >
                 <LinkedInIcon className="h-[22px] w-[22px]" />
@@ -118,9 +118,9 @@ export function Hero() {
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 className="absolute -inset-4 rounded-full bg-gradient-to-r from-cyan-400 via-violet-500 to-fuchsia-500 opacity-60 blur-sm"
               />
-              <div className="relative h-64 w-64 overflow-hidden rounded-full border-4 border-white/20 sm:h-80 sm:w-80">
+              <div className="relative h-64 w-64 overflow-hidden rounded-full border-4 border-gray-200 sm:h-80 sm:w-80 dark:border-white/20">
                 <Image
-                  src="/profile.svg"
+                  src={personal.profileImage}
                   alt={personal.name}
                   fill
                   className="object-cover"
@@ -131,7 +131,7 @@ export function Hero() {
               <motion.div
                 animate={{ scale: [1, 1.05, 1] }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="absolute -bottom-2 -right-2 rounded-full border border-cyan-400/50 bg-[#060b1a] px-4 py-2 text-sm font-medium text-cyan-400 shadow-lg"
+                className="absolute -bottom-2 -right-2 rounded-full border border-cyan-500/30 bg-white px-4 py-2 text-sm font-medium text-cyan-600 shadow-lg dark:border-cyan-400/50 dark:bg-[#060b1a] dark:text-cyan-400"
               >
                 {personal.title}
               </motion.div>

@@ -50,7 +50,7 @@ export function ParticleBackground() {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
-        ctx.globalAlpha = 0.4;
+        ctx.globalAlpha = 0.25;
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {

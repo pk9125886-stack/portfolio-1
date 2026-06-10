@@ -28,7 +28,7 @@ export function Skills() {
                 "rounded-full px-5 py-2 text-sm font-medium transition-all",
                 active === cat
                   ? "bg-gradient-to-r from-cyan-500 to-violet-600 text-white shadow-lg shadow-cyan-500/25"
-                  : "border border-white/10 bg-white/5 text-muted-foreground hover:border-cyan-400/30"
+                  : "border border-theme bg-gray-50 text-muted-foreground hover:border-cyan-300 dark:bg-white/5 dark:hover:border-cyan-400/30"
               )}
             >
               {cat}

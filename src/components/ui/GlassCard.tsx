@@ -16,8 +16,8 @@ export function GlassCard({ children, className, hover = true }: GlassCardProps)
       whileHover={hover ? { y: -4, scale: 1.01 } : undefined}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className={cn(
-        "rounded-2xl border border-white/10 bg-white/5 p-6 shadow-xl backdrop-blur-xl",
-        "dark:bg-white/5 dark:border-white/10",
+        "rounded-2xl border border-theme bg-card p-6 shadow-card backdrop-blur-sm",
+        "dark:bg-white/5 dark:border-white/10 dark:shadow-xl dark:backdrop-blur-xl",
         className
       )}
     >

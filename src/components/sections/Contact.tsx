@@ -84,7 +84,7 @@ export function Contact() {
                   required
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/30"
+                  className="w-full rounded-xl border border-theme bg-input px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 dark:focus:border-cyan-400/50 dark:focus:ring-cyan-400/30"
                   placeholder="Your name"
                 />
               </div>
@@ -98,7 +98,7 @@ export function Contact() {
                   required
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/30"
+                  className="w-full rounded-xl border border-theme bg-input px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 dark:focus:border-cyan-400/50 dark:focus:ring-cyan-400/30"
                   placeholder="your@email.com"
                 />
               </div>
@@ -112,7 +112,7 @@ export function Contact() {
                   rows={5}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/30"
+                  className="w-full resize-none rounded-xl border border-theme bg-input px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 dark:focus:border-cyan-400/50 dark:focus:ring-cyan-400/30"
                   placeholder="Your message..."
                 />
               </div>

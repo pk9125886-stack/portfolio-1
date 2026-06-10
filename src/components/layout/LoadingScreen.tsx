@@ -29,7 +29,7 @@ export function LoadingScreen() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.05 }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-[#060b1a]"
+          className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-white dark:bg-[#060b1a]"
         >
           <motion.div
             animate={{ rotate: 360 }}
@@ -44,13 +44,13 @@ export function LoadingScreen() {
             {personal.firstName}
             <span className="text-cyan-400">.</span>
           </motion.h2>
-          <div className="mt-6 h-1 w-48 overflow-hidden rounded-full bg-white/10">
+          <div className="mt-6 h-1 w-48 overflow-hidden rounded-full bg-gray-200 dark:bg-white/10">
             <motion.div
               className="h-full bg-gradient-to-r from-cyan-400 to-violet-500"
               style={{ width: `${progress}%` }}
             />
           </div>
-          <p className="mt-3 text-sm text-white/50">{progress}%</p>
+          <p className="mt-3 text-sm text-muted-foreground">{progress}%</p>
         </motion.div>
       )}
     </AnimatePresence>

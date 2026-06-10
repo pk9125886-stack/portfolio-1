@@ -22,7 +22,7 @@ export function Achievements() {
             </div>
             <ul className="space-y-4">
               {achievements.certifications.map((cert) => (
-                <li key={cert.title} className="border-b border-white/5 pb-3 last:border-0">
+                <li key={cert.title} className="border-b border-theme pb-3 last:border-0">
                   <p className="font-medium">{cert.title}</p>
                   <p className="text-sm text-muted-foreground">
                     {cert.issuer} · {cert.year}
@@ -44,7 +44,7 @@ export function Achievements() {
                     href={profile.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block rounded-lg p-2 transition hover:bg-white/5"
+                    className="block rounded-lg p-2 transition hover:bg-gray-50 dark:hover:bg-white/5"
                   >
                     <p className="font-medium">{profile.platform}</p>
                     <p className="text-sm text-cyan-400">@{profile.username}</p>
@@ -89,7 +89,7 @@ export function Achievements() {
             </div>
             <ul className="space-y-4">
               {achievements.hackathons.map((h) => (
-                <li key={h.name} className="border-b border-white/5 pb-3">
+                <li key={h.name} className="border-b border-theme pb-3">
                   <p className="font-medium">{h.name}</p>
                   <p className="text-sm text-muted-foreground">
                     {h.result} · {h.year}

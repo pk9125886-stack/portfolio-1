@@ -93,10 +93,10 @@ function ProjectCard({
             featured ? "h-48 lg:h-auto lg:w-2/5" : "h-44"
           )}
         >
-          <div className="flex h-full items-center justify-center text-4xl font-bold text-white/20">
+          <div className="flex h-full items-center justify-center text-4xl font-bold text-gray-300 dark:text-white/20">
             {project.title.charAt(0)}
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#060b1a]/80 to-transparent opacity-0 transition group-hover:opacity-100" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent opacity-0 transition group-hover:opacity-100 dark:from-[#060b1a]/80" />
         </div>
         <div className={cn("p-6", featured && "lg:w-3/5")}>
           <h3 className="text-lg font-semibold">{project.title}</h3>
@@ -105,7 +105,7 @@ function ProjectCard({
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="rounded-full bg-white/5 px-2.5 py-0.5 text-xs text-cyan-400 ring-1 ring-cyan-400/20"
+                className="rounded-full bg-cyan-50 px-2.5 py-0.5 text-xs text-cyan-700 ring-1 ring-cyan-200 dark:bg-white/5 dark:text-cyan-400 dark:ring-cyan-400/20"
               >
                 {tech}
               </span>
