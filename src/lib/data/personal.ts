@@ -1,0 +1,61 @@
+export const personal = {
+  name: "Pankaj Kumar",
+  firstName: "Pankaj",
+  lastName: "Kumar",
+  title: "Frontend Developer",
+  tagline:
+    "Frontend Developer focused on modern UI, animations, and real-world web products.",
+  bio: "I am a passionate frontend developer who loves building interactive, visually appealing, and user-focused web applications.",
+  location: "India",
+  email: "pankaj.kumar@example.com",
+  resumeUrl: "/resume.pdf",
+  typingRoles: [
+    "Frontend Developer",
+    "UI/UX Enthusiast",
+    "Student",
+    "Tech Enthusiast",
+  ],
+  social: {
+    github: "https://github.com/pk9125886-stack",
+    linkedin: "https://www.linkedin.com/in/pankaj-kumar-a87524383",
+    twitter: "",
+    leetcode: "",
+    codeforces: "",
+  },
+  stats: {
+    projectsCompleted: 12,
+    problemsSolved: 150,
+    technologiesLearned: 18,
+    yearsOfExperience: 2,
+  },
+  focus: [
+    { icon: "🎯", title: "Focus", text: "UI/UX, animations, performance, clean code" },
+    { icon: "💡", title: "Mindset", text: "Learn fast, build real projects, improve daily" },
+    { icon: "🛠", title: "Tools", text: "HTML, CSS, JavaScript, Git, Firebase" },
+    { icon: "🚀", title: "Goal", text: "Become a world-class frontend engineer" },
+  ],
+  education: [
+    {
+      degree: "Bachelor of Technology",
+      institution: "Engineering College",
+      period: "2022 — Present",
+      description: "Pursuing degree with focus on software development and web technologies.",
+    },
+  ],
+  experience: [
+    {
+      role: "Frontend Developer",
+      company: "Freelance / Personal Projects",
+      period: "2024 — Present",
+      description:
+        "Building responsive web applications with modern UI, animations, and performance optimization.",
+    },
+    {
+      role: "Student Developer",
+      company: "Self-Learning",
+      period: "2022 — Present",
+      description:
+        "Learning frontend technologies through hands-on projects and open-source contributions.",
+    },
+  ],
+} as const;
