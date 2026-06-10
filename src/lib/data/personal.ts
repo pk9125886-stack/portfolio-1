@@ -51,12 +51,5 @@ export const personal = {
       description:
         "Building responsive web applications with modern UI, animations, and performance optimization.",
     },
-    {
-      role: "Student Developer",
-      company: "Self-Learning",
-      period: "2026 — Present",
-      description:
-        "Learning frontend technologies through hands-on projects and open-source contributions.",
-    },
   ],
 } as const;
