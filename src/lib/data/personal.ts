@@ -54,7 +54,7 @@ export const personal = {
     {
       role: "Student Developer",
       company: "Self-Learning",
-      period: "2022 — Present",
+      period: "2026 — Present",
       description:
         "Learning frontend technologies through hands-on projects and open-source contributions.",
     },
