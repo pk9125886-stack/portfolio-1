@@ -37,10 +37,10 @@ export const personal = {
   ],
   education: [
     {
-      degree: "Bachelor of Technology",
-      institution: "Engineering College",
-      period: "2022 — Present",
-      description: "Pursuing degree with focus on software development and web technologies.",
+      degree: "Bachelor of Technology (B.Tech)",
+      institution: "Rungta International Skills University",
+      period: "2025 — Present",
+      description: "Currently in 2nd semester, pursuing degree with focus on software development and web technologies.",
     },
   ],
   experience: [
