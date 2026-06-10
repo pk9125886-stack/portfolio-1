@@ -29,7 +29,21 @@ npm run build
 npm start
 ```
 
-Deploy to [Vercel](https://vercel.com) or GitHub Pages with `NEXT_PUBLIC_SITE_URL` set in environment variables.
+### Deploy to Vercel (recommended)
+
+1. Go to [vercel.com/new](https://vercel.com/new)
+2. Import **pk9125886-stack/portfolio-1** from GitHub
+3. Add environment variable: `NEXT_PUBLIC_SITE_URL` = your Vercel URL (e.g. `https://portfolio-1.vercel.app`)
+4. Click **Deploy**
+
+Auto-deploy on every push to `main` is enabled once the repo is connected.
+
+### CLI deploy
+
+```bash
+npx vercel login
+npx vercel --prod
+```
 
 ## Customization
 
