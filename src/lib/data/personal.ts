@@ -2,16 +2,16 @@ export const personal = {
   name: "Pankaj Kumar",
   firstName: "Pankaj",
   lastName: "Kumar",
-  title: "Software Developer",
+  title: "Website Developer",
   tagline:
-    "Software Developer focused on modern UI, animations, and real-world web products.",
-  bio: "I am a passionate software developer who loves building interactive, visually appealing, and user-focused web applications.",
-  profileImage: "/profile.jpg",
+    "Website Developer focused on modern UI, animations, and real-world web products.",
+  bio: "I am a passionate website developer who loves building interactive, visually appealing, and user-focused web applications.",
+  profileImage: "/profile.png",
   location: "India",
   email: "pankaj.kumar@example.com",
   resumeUrl: "/resume.pdf",
   typingRoles: [
-    "Software Developer",
+    "Website Developer",
     "UI/UX Enthusiast",
     "Student",
     "Tech Enthusiast",
@@ -33,7 +33,7 @@ export const personal = {
     { icon: "🎯", title: "Focus", text: "UI/UX, animations, performance, clean code" },
     { icon: "💡", title: "Mindset", text: "Learn fast, build real projects, improve daily" },
     { icon: "🛠", title: "Tools", text: "HTML, CSS, JavaScript, Git, Firebase" },
-    { icon: "🚀", title: "Goal", text: "Become a world-class software engineer" },
+    { icon: "🚀", title: "Goal", text: "Become a world-class website developer" },
   ],
   education: [
     {
@@ -45,7 +45,7 @@ export const personal = {
   ],
   experience: [
     {
-      role: "Software Developer",
+      role: "Website Developer",
       company: "Freelance / Personal Projects",
       period: "2024 — Present",
       description:

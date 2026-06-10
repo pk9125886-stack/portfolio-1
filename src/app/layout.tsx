@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   description: personal.tagline,
   keywords: [
     "Pankaj Kumar",
-    "Software Developer",
+    "Website Developer",
     "React",
     "Next.js",
     "Portfolio",

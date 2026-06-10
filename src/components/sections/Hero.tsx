@@ -123,7 +123,7 @@ export function Hero() {
                   src={personal.profileImage}
                   alt={personal.name}
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                   priority
                   sizes="(max-width: 640px) 256px, 320px"
                 />
