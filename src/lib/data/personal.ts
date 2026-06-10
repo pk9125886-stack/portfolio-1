@@ -27,7 +27,7 @@ export const personal = {
     projectsCompleted: 12,
     problemsSolved: 150,
     technologiesLearned: 18,
-    yearsOfExperience: 2,
+    yearsOfExperience: 0,
   },
   focus: [
     { icon: "🎯", title: "Focus", text: "UI/UX, animations, performance, clean code" },

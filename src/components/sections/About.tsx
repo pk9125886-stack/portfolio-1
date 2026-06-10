@@ -47,7 +47,7 @@ export function About() {
           <AnimatedCounter value={personal.stats.projectsCompleted} label="Projects Completed" suffix="+" />
           <AnimatedCounter value={personal.stats.problemsSolved} label="Problems Solved" suffix="+" />
           <AnimatedCounter value={personal.stats.technologiesLearned} label="Technologies Learned" suffix="+" />
-          <AnimatedCounter value={personal.stats.yearsOfExperience} label="Years of Experience" suffix="+" />
+          <AnimatedCounter value={personal.stats.yearsOfExperience} label="Years of Experience" suffix={personal.stats.yearsOfExperience > 0 ? "+" : ""} />
         </div>
 
         <div className="grid gap-8 lg:grid-cols-2">
