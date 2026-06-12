@@ -14,6 +14,7 @@ import { Achievements } from "@/components/sections/Achievements";
 import { GitHubSection } from "@/components/sections/GitHubSection";
 import { Blog } from "@/components/sections/Blog";
 import { Contact } from "@/components/sections/Contact";
+import { RecentMessages } from "@/components/sections/RecentMessages";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
         <GitHubSection />
         <Blog />
         <Contact />
+        <RecentMessages />
       </main>
       <Footer />
       <BackToTop />

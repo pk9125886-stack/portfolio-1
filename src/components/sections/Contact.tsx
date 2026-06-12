@@ -1,22 +1,47 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Mail, MapPin, Send } from "lucide-react";
+import { motion } from "framer-motion";
+import { Mail, MapPin, Send, Loader2 } from "lucide-react";
 import { LinkedInIcon } from "@/components/ui/Icons";
 import { personal } from "@/lib/data/personal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { useToast } from "@/components/providers/ToastProvider";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
 export function Contact() {
+  const { toast } = useToast();
   const [status, setStatus] = useState<FormStatus>("idle");
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+    website: "", // Honeypot field for spam prevention
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // 1. Client-side Validation: check for empty fields
+    if (!form.name.trim() || !form.email.trim() || !form.subject.trim() || !form.message.trim()) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
+    // 2. Email Validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(form.email.trim())) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
+    // Prevent duplicate submissions if already loading
+    if (status === "loading") return;
+
     setStatus("loading");
     try {
       const res = await fetch("/api/contact", {
@@ -24,13 +49,24 @@ export function Contact() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      if (!res.ok) throw new Error("Failed");
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to send message.");
+      }
+
+      toast.success("Message sent successfully!");
       setStatus("success");
-      setForm({ name: "", email: "", message: "" });
-    } catch {
+      
+      // Clear all form fields
+      setForm({ name: "", email: "", subject: "", message: "", website: "" });
+    } catch (error: any) {
+      toast.error(error.message || "Failed to send message. Please try again.");
       setStatus("error");
+    } finally {
+      setTimeout(() => setStatus("idle"), 3000);
     }
-    setTimeout(() => setStatus("idle"), 4000);
   };
 
   return (
@@ -74,34 +110,69 @@ export function Contact() {
 
           <GlassCard className="lg:col-span-3">
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Honeypot field (hidden from users, will be filled by spambots) */}
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="website">Website</label>
+                <input
+                  id="website"
+                  type="text"
+                  name="website"
+                  value={form.website}
+                  onChange={(e) => setForm({ ...form, website: e.target.value })}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="name" className="mb-1.5 block text-sm font-medium">
+                    Name
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    required
+                    disabled={status === "loading"}
+                    value={form.name}
+                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    className="w-full rounded-xl border border-theme bg-input px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 dark:focus:border-cyan-400/50 dark:focus:ring-cyan-400/30 disabled:opacity-50"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="mb-1.5 block text-sm font-medium">
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    disabled={status === "loading"}
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    className="w-full rounded-xl border border-theme bg-input px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 dark:focus:border-cyan-400/50 dark:focus:ring-cyan-400/30 disabled:opacity-50"
+                    placeholder="your@email.com"
+                  />
+                </div>
+              </div>
+
               <div>
-                <label htmlFor="name" className="mb-1.5 block text-sm font-medium">
-                  Name
+                <label htmlFor="subject" className="mb-1.5 block text-sm font-medium">
+                  Subject
                 </label>
                 <input
-                  id="name"
+                  id="subject"
                   type="text"
                   required
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full rounded-xl border border-theme bg-input px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 dark:focus:border-cyan-400/50 dark:focus:ring-cyan-400/30"
-                  placeholder="Your name"
+                  disabled={status === "loading"}
+                  value={form.subject}
+                  onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                  className="w-full rounded-xl border border-theme bg-input px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 dark:focus:border-cyan-400/50 dark:focus:ring-cyan-400/30 disabled:opacity-50"
+                  placeholder="What is this about?"
                 />
               </div>
-              <div>
-                <label htmlFor="email" className="mb-1.5 block text-sm font-medium">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full rounded-xl border border-theme bg-input px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 dark:focus:border-cyan-400/50 dark:focus:ring-cyan-400/30"
-                  placeholder="your@email.com"
-                />
-              </div>
+
               <div>
                 <label htmlFor="message" className="mb-1.5 block text-sm font-medium">
                   Message
@@ -110,39 +181,27 @@ export function Contact() {
                   id="message"
                   required
                   rows={5}
+                  disabled={status === "loading"}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full resize-none rounded-xl border border-theme bg-input px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 dark:focus:border-cyan-400/50 dark:focus:ring-cyan-400/30"
+                  className="w-full resize-none rounded-xl border border-theme bg-input px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/30 dark:focus:border-cyan-400/50 dark:focus:ring-cyan-400/30 disabled:opacity-50"
                   placeholder="Your message..."
                 />
               </div>
-              <MagneticButton type="submit" disabled={status === "loading"} className="w-full">
-                <Send size={16} />
-                {status === "loading" ? "Sending..." : "Send Message"}
-              </MagneticButton>
 
-              <AnimatePresence>
-                {status === "success" && (
-                  <motion.p
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    className="text-center text-sm text-green-400"
-                  >
-                    Message sent successfully! I&apos;ll get back to you soon.
-                  </motion.p>
+              <MagneticButton type="submit" disabled={status === "loading"} className="w-full">
+                {status === "loading" ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send size={16} />
+                    Send Message
+                  </>
                 )}
-                {status === "error" && (
-                  <motion.p
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    className="text-center text-sm text-red-400"
-                  >
-                    Something went wrong. Please try again or email me directly.
-                  </motion.p>
-                )}
-              </AnimatePresence>
+              </MagneticButton>
             </form>
           </GlassCard>
         </div>

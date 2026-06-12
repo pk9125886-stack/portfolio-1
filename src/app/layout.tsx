@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { ToastProvider } from "@/components/providers/ToastProvider";
 import { personal } from "@/lib/data/personal";
 import "./globals.css";
 
@@ -107,7 +108,9 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen antialiased">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <ToastProvider>{children}</ToastProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
