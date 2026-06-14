@@ -36,7 +36,7 @@ export const achievements = {
     {
       name: "College Tech Hackathon",
       result: "Participant",
-      year: "2026",
+      year: "2025",
       description: "Built innovative solutions under time constraints.",
     },
   ],
@@ -44,7 +44,7 @@ export const achievements = {
     {
       title: "Best Project Presentation",
       event: "College Tech Fest",
-      year: "2026",
+      year: "2025",
     },
   ],
 };
