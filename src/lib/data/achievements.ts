@@ -3,13 +3,13 @@ export const achievements = {
     {
       title: "Web Development Fundamentals",
       issuer: "Online Learning Platform",
-      year: "2024",
+      year: "2026",
       link: "#",
     },
     {
       title: "JavaScript Essentials",
       issuer: "Self-Certified Project Work",
-      year: "2024",
+      year: "2026",
       link: "#",
     },
   ],
@@ -36,7 +36,7 @@ export const achievements = {
     {
       name: "College Tech Hackathon",
       result: "Participant",
-      year: "2024",
+      year: "2026",
       description: "Built innovative solutions under time constraints.",
     },
   ],
@@ -44,7 +44,7 @@ export const achievements = {
     {
       title: "Best Project Presentation",
       event: "College Tech Fest",
-      year: "2024",
+      year: "2026",
     },
   ],
 };
