@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Star } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/Icons";
 import { projects, projectFilters } from "@/lib/data/projects";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -11,7 +11,6 @@ import { cn } from "@/lib/utils";
 
 export function Projects() {
   const [filter, setFilter] = useState<string>("All");
-  const featured = projects.filter((p) => p.featured);
 
   const filtered =
     filter === "All"
@@ -25,20 +24,6 @@ export function Projects() {
           title="Projects"
           subtitle="Real-world applications and creative experiments"
         />
-
-        {featured.length > 0 && (
-          <div className="mb-16">
-            <h3 className="mb-6 flex items-center gap-2 text-lg font-semibold">
-              <Star className="text-amber-400" size={20} />
-              Featured Projects
-            </h3>
-            <div className="grid gap-6 lg:grid-cols-2">
-              {featured.slice(0, 2).map((project, i) => (
-                <ProjectCard key={project.id} project={project} featured index={i} />
-              ))}
-            </div>
-          </div>
-        )}
 
         <div className="mb-8 flex flex-wrap justify-center gap-2">
           {projectFilters.map((f) => (
