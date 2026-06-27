@@ -31,7 +31,7 @@ export default function Home() {
         <Projects />
         <Achievements />
         <GitHubSection />
-        <Blog />
+        {/* <Blog /> */}
         <Contact />
         <RecentMessages />
       </main>

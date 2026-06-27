@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Send, Loader2 } from "lucide-react";
 import { LinkedInIcon } from "@/components/ui/Icons";
@@ -15,6 +15,7 @@ type FormStatus = "idle" | "loading" | "success" | "error";
 export function Contact() {
   const { toast } = useToast();
   const [status, setStatus] = useState<FormStatus>("idle");
+  const [cooldown, setCooldown] = useState<number>(0);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -23,8 +24,21 @@ export function Contact() {
     website: "", // Honeypot field for spam prevention
   });
 
+  useEffect(() => {
+    if (cooldown <= 0) return;
+    const timer = setInterval(() => {
+      setCooldown((prev) => prev - 1);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [cooldown]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (cooldown > 0) {
+      toast.info(`Please wait ${cooldown}s before sending another message.`);
+      return;
+    }
 
     // 1. Client-side Validation: check for empty fields
     if (!form.name.trim() || !form.email.trim() || !form.subject.trim() || !form.message.trim()) {
@@ -58,6 +72,7 @@ export function Contact() {
 
       toast.success("Message sent successfully!");
       setStatus("success");
+      setCooldown(30); // 30-second cooldown to prevent spam
       
       // Clear all form fields
       setForm({ name: "", email: "", subject: "", message: "", website: "" });
@@ -189,12 +204,14 @@ export function Contact() {
                 />
               </div>
 
-              <MagneticButton type="submit" disabled={status === "loading"} className="w-full">
+              <MagneticButton type="submit" disabled={status === "loading" || cooldown > 0} className="w-full">
                 {status === "loading" ? (
                   <>
                     <Loader2 size={16} className="animate-spin" />
                     Sending...
                   </>
+                ) : cooldown > 0 ? (
+                  <>Please wait {cooldown}s...</>
                 ) : (
                   <>
                     <Send size={16} />

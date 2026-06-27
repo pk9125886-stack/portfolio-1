@@ -10,12 +10,12 @@ interface SkillBarProps {
 
 export function SkillBar({ name, level, delay = 0 }: SkillBarProps) {
   return (
-    <div className="space-y-2">
-      <div className="flex justify-between text-sm">
-        <span className="font-medium">{name}</span>
-        <span className="text-cyan-400">{level}%</span>
+    <div className="w-full space-y-2">
+      <div className="flex w-full items-center justify-between text-sm font-medium">
+        <span className="text-foreground tracking-wide truncate pr-2">{name}</span>
+        <span className="text-cyan-600 dark:text-cyan-400 font-mono text-xs sm:text-sm shrink-0">{level}%</span>
       </div>
-      <div className="h-2 overflow-hidden rounded-full bg-gray-200 dark:bg-white/10">
+      <div className="h-2 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-white/10">
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${level}%` }}

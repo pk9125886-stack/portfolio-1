@@ -38,7 +38,7 @@ export function Achievements() {
               <h3 className="font-semibold">Coding Profiles</h3>
             </div>
             <ul className="space-y-4">
-              {achievements.codingProfiles.map((profile) => (
+              {achievements.codingProfiles.filter((profile) => profile.url && profile.url !== "#").map((profile) => (
                 <li key={profile.platform}>
                   <a
                     href={profile.url}

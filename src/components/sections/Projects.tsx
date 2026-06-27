@@ -78,6 +78,8 @@ function ProjectCard({
   featured?: boolean;
   index: number;
 }) {
+  const [imgError, setImgError] = useState(false);
+
   return (
     <motion.div
       layout
@@ -93,10 +95,19 @@ function ProjectCard({
             featured ? "h-48 lg:h-auto lg:w-2/5" : "h-44"
           )}
         >
-          <div className="flex h-full items-center justify-center text-4xl font-bold text-gray-300 dark:text-white/20">
-            {project.title.charAt(0)}
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent opacity-0 transition group-hover:opacity-100 dark:from-[#060b1a]/80" />
+          {project.image && !imgError ? (
+            <img
+              src={project.image}
+              alt={project.title}
+              onError={() => setImgError(true)}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <div className="flex h-full items-center justify-center text-4xl font-bold text-cyan-600/40 dark:text-cyan-400/30">
+              {project.title.charAt(0)}
+            </div>
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent opacity-0 transition group-hover:opacity-100 dark:from-[#060b1a]/80 pointer-events-none" />
         </div>
         <div className={cn("p-6", featured && "lg:w-3/5")}>
           <h3 className="text-lg font-semibold">{project.title}</h3>

@@ -8,7 +8,7 @@ export const personal = {
   bio: "I am a passionate website developer who loves building interactive, visually appealing, and user-focused web applications.",
   profileImage: "/profile.png",
   location: "India",
-  email: "pankaj.kumar@example.com",
+  email: "pankaj.kumar1@rungta.org",
   resumeUrl: "/resume.pdf",
   typingRoles: [
     "Website Developer",
@@ -27,7 +27,7 @@ export const personal = {
     projectsCompleted: 12,
     problemsSolved: 150,
     technologiesLearned: 18,
-    yearsOfExperience: 0,
+    yearsOfExperience: "<1",
   },
   focus: [
     { icon: "🎯", title: "Focus", text: "UI/UX, animations, performance, clean code" },
